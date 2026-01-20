@@ -8,42 +8,45 @@
 # https://mvnrepository.com/
 
 [versions]
-agp = "8.13.1"
-capsule = "2.1.1"
-kotlin = "2.2.21"
-ksp = "2.2.21-2.0.4"
-composeBom = "2025.11.00"
-compose = "1.9.4"
+agp = "9.0.0"
+kotlin = "2.3.0"
+ksp = "2.3.4"
+composeBom = "2026.01.00"
+compose = "1.10.1"
+m3color = "2025.4"
+haze = "1.7.1"
 splashScreen = "1.2.0"
-material3 = "1.5.0-alpha08"
-room = "2.8.3"
+material3 = "1.5.0-alpha12"
+room = "2.8.4"
 ktx-serialization = "1.9.0"
 rikka-shizuku = "13.1.5"
 koin-bom = "4.1.1"
-materialVersion = "1.13.0"
-datastoreCoreAndroid = "1.2.0-rc01"
-aboutLibraries = "13.1.0"
+datastoreCoreAndroid = "1.2.0"
+aboutLibraries = "13.2.1"
 timber = "5.0.1"
+miuix = "0.8.0-8c43829-SNAPSHOT"
 
 [plugins]
 agp-lib = { id = "com.android.library", version.ref = "agp" }
 agp-app = { id = "com.android.application", version.ref = "agp" }
-kotlin = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
 kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
 ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
 room = { id = "androidx.room", version.ref = "room" }
 compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
+aboutLibraries = { id = "com.mikepenz.aboutlibraries.plugin", version.ref = "aboutLibraries" }
 
 [libraries]
 androidx-core = { group = "androidx.core", name = "core-ktx", version = "1.17.0" }
 androidx-compose-bom = { group = "androidx.compose", name = "compose-bom", version.ref = "composeBom" }
-androidx-activity-compose = { group = "androidx.activity", name = "activity-compose", version = "1.11.0" }
-androidx-lifecycle = { group = "androidx.lifecycle", name = "lifecycle-runtime-ktx", version = "2.9.4" }
+androidx-activity-compose = { group = "androidx.activity", name = "activity-compose", version = "1.12.2" }
+androidx-lifecycle = { group = "androidx.lifecycle", name = "lifecycle-runtime-ktx", version = "2.10.0" }
 androidx-datastore-preferences = { group = "androidx.datastore", name = "datastore-preferences", version.ref = "datastoreCoreAndroid" }
 androix-splashscreen = { group = "androidx.core", name = "core-splashscreen", version.ref = "splashScreen" }
 
-material = { module = "com.google.android.material:material", version.ref = "materialVersion" }
+m3color = { module = "com.github.Kyant0:m3color", version.ref = "m3color" }
+haze = { module = "dev.chrisbanes.haze:haze", version.ref = "haze" }
+haze-materials = { module = "dev.chrisbanes.haze:haze-materials", version.ref = "haze" }
 compose-ui = { group = "androidx.compose.ui", name = "ui", version.ref = "compose" }
 compose-ui-graphics = { module = "androidx.compose.ui:ui-graphics", version.ref = "compose" }
 compose-ui-tooling = { module = "androidx.compose.ui:ui-tooling", version.ref = "compose" }
@@ -61,10 +64,9 @@ room-ktx = { group = "androidx.room", name = "room-ktx", version.ref = "room" }
 # https://github.com/Kotlin/kotlinx.serialization/blob/master/README.md#setup
 # https://github.com/Kotlin/kotlinx.serialization/blob/master/formats/README.md
 ktx-serializationJson = { group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-json", version.ref = "ktx-serialization" }
-
 # AndroidHiddenApiBypass
 # https://github.com/LSPosed/AndroidHiddenApiBypass
-lsposed-hiddenapibypass = { group = "org.lsposed.hiddenapibypass", name = "hiddenapibypass", version = "6.1" }
+# hiddenapibypass = { group = "org.lsposed.hiddenapibypass", name = "hiddenapibypass", version = "6.1" }
 
 # Koin Inject
 # https://insert-koin.io/docs/setup/koin
@@ -79,12 +81,14 @@ koin-compose-viewmodel = { group = "io.insert-koin", name = "koin-compose-viewmo
 rikka-shizuku-api = { group = "dev.rikka.shizuku", name = "api", version.ref = "rikka-shizuku" }
 rikka-shizuku-provider = { group = "dev.rikka.shizuku", name = "provider", version.ref = "rikka-shizuku" }
 
-# AndroidAppProcess
-# https://github.com/iamr0s/AndroidAppProcess
-iamr0s-androidAppProcess = { group = "io.github.iamr0s", name = "AndroidAppProcess", version = "1.4.1" }
+# Core module (required for accessing library data)
+aboutlibraries-core = { module = "com.mikepenz:aboutlibraries-core", version.ref = "aboutLibraries" }
+# Compose UI modules (choose one or both)
+aboutlibraries-compose-m3 = { module = "com.mikepenz:aboutlibraries-compose-m3", version.ref = "aboutLibraries" } # Material 3 UI
 
 # log
 timber = { group = "com.jakewharton.timber", name = "timber", version.ref = "timber" }
 
 # miuix
-miuix = { group = "top.yukonga.miuix.kmp", name = "miuix-android", version = "0.6.1" }
+miuix = { group = "top.yukonga.miuix.kmp", name = "miuix-android", version.ref = "miuix" }
+miuix-icons = { group = "top.yukonga.miuix.kmp", name = "miuix-icons-android", version.ref = "miuix" }

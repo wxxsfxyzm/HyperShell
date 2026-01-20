@@ -1,10 +1,8 @@
 import java.io.FileInputStream
 import java.util.Properties
-import kotlin.apply
 
 plugins {
     alias(libs.plugins.agp.app)
-    alias(libs.plugins.kotlin)
     alias(libs.plugins.ksp)
     alias(libs.plugins.room)
     alias(libs.plugins.kotlin.serialization)
@@ -20,7 +18,7 @@ android {
     }
     defaultConfig {
         applicationId = "app.hypershell"
-        minSdk = 30
+        minSdk = 34
         targetSdk = 36
         versionCode = 1
         versionName = "1.0"
@@ -70,13 +68,12 @@ android {
     }
 
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_21
-        targetCompatibility = JavaVersion.VERSION_21
+        sourceCompatibility = JavaVersion.VERSION_25
+        targetCompatibility = JavaVersion.VERSION_25
     }
-    kotlin {
-        jvmToolchain(21)
-    }
+
     buildFeatures {
+        buildConfig = true
         compose = true
         aidl = true
     }
@@ -86,10 +83,16 @@ android {
         }
     }
 }
+
+kotlin {
+    jvmToolchain(25)
+}
+
 room {
     // Specify the schema directory
     schemaDirectory("$projectDir/schemas")
 }
+
 dependencies {
     implementation(libs.androidx.core)
     implementation(libs.androidx.lifecycle)
@@ -103,7 +106,6 @@ dependencies {
     implementation(libs.compose.material3)
     implementation(libs.compose.navigation)
     implementation(libs.compose.materialIcons)
-    implementation(libs.material)
     // Preview support only for debug builds
     debugImplementation(libs.compose.ui.tooling)
     debugImplementation(libs.compose.ui.test.manifest)
@@ -113,7 +115,7 @@ dependencies {
     implementation(libs.room.ktx)
     // implementation(libs.ktx.serializationJson)
 
-    implementation(libs.lsposed.hiddenapibypass)
+    // implementation(libs.hiddenapibypass)
 
     implementation(platform(libs.koin.bom))
     implementation(libs.koin.core)
@@ -124,11 +126,19 @@ dependencies {
     implementation(libs.rikka.shizuku.api)
     implementation(libs.rikka.shizuku.provider)
 
-    implementation(libs.iamr0s.androidAppProcess)
+    // implementation(libs.iamr0s.androidAppProcess)
 
     // log
     implementation(libs.timber)
 
     // miuix
     implementation(libs.miuix)
+    implementation(libs.miuix.icons)
+
+    // haze
+    implementation(libs.haze)
+    implementation(libs.haze.materials)
+
+    // m3color
+    implementation(libs.m3color)
 }
