@@ -73,7 +73,7 @@ fun HyperShellTheme(
         ThemeMode.SYSTEM -> isSystemInDarkTheme()
     }
 
-    val keyColor = if (useDynamicColor && Build.VERSION.SDK_INT >= Build.VERSION_CODES.S)
+    val keyColor = if (useDynamicColor)
         colorResource(id = android.R.color.system_accent1_500)
     else seedColor
 

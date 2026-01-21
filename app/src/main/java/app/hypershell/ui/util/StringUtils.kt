@@ -3,6 +3,7 @@ package app.hypershell.ui.util
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.res.stringResource
 import app.hypershell.R
+import app.hypershell.data.settings.model.PrivilegedBackend
 import app.hypershell.ui.theme.m3color.RawColor
 
 @Composable
@@ -27,3 +28,9 @@ fun RawColor.getDisplayName() = when (key) {
     "grey" -> stringResource(R.string.color_grey)
     else -> key
 }
+
+fun PrivilegedBackend.getPromptSymbol(): String =
+    when (this) {
+        PrivilegedBackend.ROOT -> "#"
+        PrivilegedBackend.SHIZUKU -> "$"
+    }

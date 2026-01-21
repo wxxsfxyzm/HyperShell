@@ -1,5 +1,6 @@
 package app.hypershell.data.terminal.repo
 
+import app.hypershell.data.settings.model.PrivilegedBackend
 import app.hypershell.data.terminal.local.CommandHistoryEntity
 import kotlinx.coroutines.flow.Flow
 
@@ -12,7 +13,7 @@ interface TerminalRepo {
     val commandHistory: Flow<List<CommandHistoryEntity>>
 
     // 创建新记录
-    suspend fun createHistory(command: String): Long
+    suspend fun createHistory(command: String, backend: PrivilegedBackend): Long
 
     // 更新输出内容
     suspend fun updateOutput(id: Long, fullOutput: String)

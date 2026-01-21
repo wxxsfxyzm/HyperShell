@@ -1,5 +1,6 @@
 package app.hypershell.data.terminal.repo.impl
 
+import app.hypershell.data.settings.model.PrivilegedBackend
 import app.hypershell.data.terminal.local.CommandHistoryDao
 import app.hypershell.data.terminal.local.CommandHistoryEntity
 import app.hypershell.data.terminal.repo.TerminalRepo
@@ -12,15 +13,15 @@ import kotlinx.coroutines.withContext
  * 终端数据仓库的具体实现
  * 负责与 Room 数据库 (DAO) 进行交互
  */
-class TerminalRepositoryImpl(
+class TerminalRepoImpl(
     private val historyDao: CommandHistoryDao
 ) : TerminalRepo {
 
     override val commandHistory: Flow<List<CommandHistoryEntity>> = historyDao.getAllFlow()
         .flowOn(Dispatchers.IO)
 
-    override suspend fun createHistory(command: String): Long = withContext(Dispatchers.IO) {
-        val entity = CommandHistoryEntity(command = command)
+    override suspend fun createHistory(command: String, backend: PrivilegedBackend): Long = withContext(Dispatchers.IO) {
+        val entity = CommandHistoryEntity(command = command, backend = backend)
         historyDao.insert(entity)
     }
 

@@ -9,9 +9,9 @@ import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
 
 class MainViewModel(
-    repo: SettingsRepo
+    settingsRepo: SettingsRepo
 ) : ViewModel() {
-    val uiState: StateFlow<MainUiState> = repo.appSettings
+    val uiState: StateFlow<MainUiState> = settingsRepo.appSettings
         .map { it.toMainUiState() } // 调用新的转换函数
         .stateIn(
             scope = viewModelScope,

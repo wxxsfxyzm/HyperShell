@@ -2,6 +2,7 @@ package app.hypershell.data.terminal.local
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import app.hypershell.data.settings.model.PrivilegedBackend
 
 /**
  * Entity representing a single command execution record.
@@ -11,6 +12,7 @@ import androidx.room.PrimaryKey
 data class CommandHistoryEntity(
     @PrimaryKey(autoGenerate = true) val id: Long = 0,
     val command: String,
+    val backend: PrivilegedBackend = PrivilegedBackend.SHIZUKU,
     val output: String = "",
     val timestamp: Long = System.currentTimeMillis()
 )

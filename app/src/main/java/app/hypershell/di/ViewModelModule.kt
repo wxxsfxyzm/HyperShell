@@ -1,7 +1,7 @@
 package app.hypershell.di
 
-import app.hypershell.data.settings.repo.SettingsRepo
 import app.hypershell.ui.activity.MainViewModel
+import app.hypershell.ui.page.main.command.QuickCommandsViewModel
 import app.hypershell.ui.page.main.settings.SettingsViewModel
 import app.hypershell.ui.page.main.settings.appearance.AppearanceViewModel
 import app.hypershell.ui.page.main.settings.terminal.TerminalSettingsViewModel
@@ -15,5 +15,6 @@ val viewModelModule = module {
     viewModel { AppearanceViewModel(get()) }
     viewModel { TerminalSettingsViewModel(get()) }
     // PrivilegedViewModel needs TerminalRepo and SettingsRepo
-    viewModel { PrivilegedViewModel(get(), get<SettingsRepo>()) }
+    viewModel { PrivilegedViewModel(get(), get(), get()) }
+    viewModel { QuickCommandsViewModel(get()) }
 }

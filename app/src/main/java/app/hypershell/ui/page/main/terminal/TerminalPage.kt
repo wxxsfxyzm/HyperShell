@@ -8,8 +8,6 @@ import app.hypershell.data.settings.model.TerminalMode
 fun TerminalPage(
     mode: TerminalMode
 ) {
-
-    // 使用 Crossfade 增加平滑的过渡动画
     Crossfade(targetState = mode, label = "TerminalModeSwitch") { mode ->
         when (mode) {
             TerminalMode.INTERACTIVE -> InteractiveTerminal()

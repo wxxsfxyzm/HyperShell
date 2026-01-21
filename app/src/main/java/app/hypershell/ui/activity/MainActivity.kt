@@ -23,9 +23,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             val mainViewModel: MainViewModel = koinViewModel()
             val uiState by mainViewModel.uiState.collectAsState()
-            splashScreen.setKeepOnScreenCondition {
-                !uiState.isLoaded
-            }
+            splashScreen.setKeepOnScreenCondition { !uiState.isLoaded }
             if (uiState.isLoaded) HyperShellTheme(
                 useMiuix = uiState.useMiuix,
                 themeMode = uiState.themeMode,

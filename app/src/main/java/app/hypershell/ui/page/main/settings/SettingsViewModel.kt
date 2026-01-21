@@ -4,6 +4,6 @@ import androidx.lifecycle.ViewModel
 import app.hypershell.data.settings.repo.SettingsRepo
 
 class SettingsViewModel(
-    private val repo: SettingsRepo
+    private val settingsRepo: SettingsRepo
 ) : ViewModel() {
 }
